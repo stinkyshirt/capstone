@@ -1,3 +1,4 @@
+import 'package:capstone/settings.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
 
@@ -8,49 +9,20 @@ class TitlePage extends StatefulWidget {
   _TitlePageState createState() => _TitlePageState();
 }
 
-class _TitlePageState extends State<TitlePage> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<Offset> _offsetAnimation;
-  late Animation<double> _opacityAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(seconds: 1),
-      vsync: this,
-    );
-
-    _offsetAnimation = Tween<Offset>(
-      begin: const Offset(0.0, -0.5),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
-    ));
-
-    _opacityAnimation = Tween<double>(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
-    ));
-
-    _controller.forward();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
+class _TitlePageState extends State<TitlePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SettingsPage()));
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 2.0),
@@ -59,34 +31,19 @@ class _TitlePageState extends State<TitlePage> with SingleTickerProviderStateMix
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SlideTransition(
-                position: _offsetAnimation,
-                child: AnimatedOpacity(
-                  opacity: _opacityAnimation.value,
-                  duration: const Duration(seconds: 1),
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
-                    child: Text(
-                      "QuickCalc",
-                      style: Theme.of(context).textTheme.displayLarge,
-                    ),
-                  ),
-                ),
-              ),
-              SlideTransition(
-                position: _offsetAnimation,
-                child: AnimatedOpacity(
-                  opacity: _opacityAnimation.value,
-                  duration: const Duration(seconds: 1),
-                  child: Text(
-                    "Title tools, done simply",
-                    style: Theme.of(context).textTheme.displaySmall,
-                  ),
-                ),
-              ),
               Padding(
-
-                  padding: EdgeInsets.symmetric(vertical: 20.0),
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: Text(
+                  "QuickCalc",
+                  style: Theme.of(context).textTheme.displayLarge,
+                ),
+              ),
+              Text(
+                "Title tools, done simply",
+                style: Theme.of(context).textTheme.displaySmall,
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 20.0),
               ),
               ElevatedButton(
                 onPressed: () {

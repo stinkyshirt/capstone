@@ -18,8 +18,6 @@ class _ConveyancePageState extends State<ConveyancePage> with SingleTickerProvid
   @override
   void initState() {
     super.initState();
-    _sale.state = "ohio";
-    _sale.county = "Franklin";
   }
 
 
