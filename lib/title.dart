@@ -84,6 +84,10 @@ class _TitlePageState extends State<TitlePage> with SingleTickerProviderStateMix
                   ),
                 ),
               ),
+              Padding(
+
+                  padding: EdgeInsets.symmetric(vertical: 20.0),
+              ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MainBase()));

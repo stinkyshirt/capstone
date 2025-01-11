@@ -21,7 +21,7 @@ class Calculator extends StatelessWidget {
       valueListenable: themeNotifier,
       builder: (_, ThemeMode currentMode, __) {
         return MaterialApp(
-          title: "CALCULATOR APP PLACEHOLDER NAME",
+          title: "QuickCalc",
           theme: ThemeData(
             textTheme: const TextTheme(
               displayLarge: TextStyle(

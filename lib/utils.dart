@@ -144,10 +144,7 @@ class SoftShadow {
               elevation: 4.0,
               borderRadius: BorderRadius.circular(24.0),
               child: Container(
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width,
+                width: 300,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(24.0),
                   color: Theme
